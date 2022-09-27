@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
 }
 
 .App-logo {
@@ -35,4 +38,69 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/*** MULTISELECT DROPDOWN STYLING ***/
+.multiselect {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown__selection {
+  width: 200px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 16px;
+}
+
+.dropdown__list {
+  max-height: 200px;
+  width: 100%;
+  border: 1px solid black;
+  list-style: none;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 5;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.dropdown__list li {
+  padding: 4px 6px;
+}
+
+.dropdown__list li:hover {
+  background-color: #206bfd55;
+}
+
+.dropdown__listitem {
+  display: flex;
+  align-items: center;
+}
+
+.chevron {
+  height: 12px;
+  width: 12px;
+}
+
+.checkbox {
+  height: 12px;
+  width: 12px;
+  border: 1px solid black;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.checkbox__checked {
+  background-color: #206bfd;
 }
