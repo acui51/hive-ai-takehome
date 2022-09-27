@@ -55,12 +55,16 @@ const Checkbox = ({ checked }) => {
   );
 };
 
-const MultiselectDropdownSingle = ({ data, onChange, value }) => {
+const MultiselectDropdownSingle = ({ data, onChange, value, width }) => {
   const [inFocus, setInFocus] = useState(false);
 
   return (
     <div className="multiselect" tabindex="0" onBlur={() => setInFocus(false)}>
-      <div onClick={() => setInFocus(!inFocus)} className="dropdown__selection">
+      <div
+        onClick={() => setInFocus(!inFocus)}
+        className="dropdown__selection"
+        style={{ width: `${width}px` }}
+      >
         {value ? <div>{value}</div> : <div>&#8203;</div>}
         {inFocus ? <ChevronUp /> : <ChevronDown />}
       </div>
@@ -82,7 +86,7 @@ const MultiselectDropdownSingle = ({ data, onChange, value }) => {
   );
 };
 
-const MultiselectDropdownChecked = ({ onChange, value, data }) => {
+const MultiselectDropdownChecked = ({ onChange, value, data, width }) => {
   const [inFocus, setInFocus] = useState(false);
 
   const memoizedValue = useMemo(() => {
@@ -99,7 +103,11 @@ const MultiselectDropdownChecked = ({ onChange, value, data }) => {
 
   return (
     <div className="multiselect" tabindex="0" onBlur={() => setInFocus(false)}>
-      <div onClick={() => setInFocus(!inFocus)} className="dropdown__selection">
+      <div
+        onClick={() => setInFocus(!inFocus)}
+        className="dropdown__selection"
+        style={{ width: `${width}px` }}
+      >
         {value.length === 0 ? (
           <div>&#8203;</div>
         ) : (
@@ -138,13 +146,13 @@ const MultiselectDropdownChecked = ({ onChange, value, data }) => {
   );
 };
 
-const MultiselectDropdown = ({ multiselect, ...rest }) => {
+const MultiselectDropdown = ({ multiselect, width = 200, ...rest }) => {
   return (
     <>
       {multiselect ? (
-        <MultiselectDropdownChecked {...rest} />
+        <MultiselectDropdownChecked width={width} {...rest} />
       ) : (
-        <MultiselectDropdownSingle {...rest} />
+        <MultiselectDropdownSingle width={width} {...rest} />
       )}
     </>
   );
@@ -180,6 +188,7 @@ function App() {
           data={mockData}
           onChange={handleCheckedChange}
           value={persons}
+          width={300}
         />
       </div>
       <div>
